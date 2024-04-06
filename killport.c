@@ -47,7 +47,7 @@ char* getExecOutput1Line (const char* cmd, char* output1line, const size_t len) 
 	puts (cmd);
 
 	FILE* output = popen (cmd, "r");
-	if (output == NULL) perror ("popen");
+	if (output == NULL) die (strerror (errno));
 
 	output1line[0] = '\0';
 	if (fgets (output1line, len, output) == NULL) puts ("(NULL output)");
